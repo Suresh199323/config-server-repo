@@ -1,0 +1,34 @@
+server:
+  port: 7863   #default port where the service will be started
+
+eureka:         #tells about the Eureka server details and its refresh time
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7000/eureka
+    healthcheck:
+      enabled: true
+
+
+logging:
+  level:
+    com.valoya.login.login: DEBUG
+spring:
+  resources:
+    chain:
+      enabled: true
+  application:
+    name: loginservice #current service name to be used by the eureka server
+
+
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:4404/valoya4
+    username: root
+    password: root1234
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
